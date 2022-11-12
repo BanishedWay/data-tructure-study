@@ -1,4 +1,7 @@
-#include <SString.h>
+#include "SString.h"
+#include <cstdlib>
+#include <iostream>
+using namespace std;
 
 int index(SString S, SString T)
 {
@@ -87,4 +90,21 @@ void get_nextVal(SString T, int nextval[])
             }
         }
     }
+}
+
+void createPolyList(PolyList &L, int n)
+{
+    int i;
+    PolyList p, q;
+    L = (PolyNode *)malloc(sizeof(PolyNode));
+    L->next = NULL;
+    q = L;
+    for (i = 1; i <= n; i++)
+    {
+        p = (PolyNode *)malloc(sizeof(PolyNode));
+        cin >> p->coef >> p->expn;
+        q->next = p;
+        q = q->next;
+    }
+    p->next = NULL;
 }
